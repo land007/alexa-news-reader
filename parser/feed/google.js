@@ -4,7 +4,7 @@ var cheerio = require("cheerio");
 exports.parse = function(xml) {
   var $ = cheerio.load(xml, {xmlMode: true});
   return {
-    articles: $("channel").first().children("item").get().map(elem => toArticle.call(elem, $))
+    articles: $("channel").first().children("item").slice(1).get().map(elem => toArticle.call(elem, $))
   };
 }
 
